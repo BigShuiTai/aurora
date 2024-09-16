@@ -51,6 +51,18 @@ class Metadata:
         if not (torch.all(self.lon >= 0) and torch.all(self.lon < 360)):
             raise ValueError("Longitudes must be in the range [0, 360).")
 
+    def get(self, name):
+        if name == 'lat':
+            return self.lat
+        elif name == 'lon':
+            return self.lon
+        elif name == 'time':
+            return self.time
+        elif name == 'atmos_levels':
+            return self.atmos_levels
+        else:
+            raise ValueError("Name not found in Metadata.")
+
 
 @dataclasses.dataclass
 class Batch:
